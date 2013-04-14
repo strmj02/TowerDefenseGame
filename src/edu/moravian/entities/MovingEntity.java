@@ -4,17 +4,18 @@
  */
 package edu.moravian.entities;
 
+import edu.moravian.math.Point2D;
+import edu.moravian.math.Vector2D;
+
 /**
  *
  * @author samson
  */
-public abstract class MovingEntity implements Entity {
+public abstract class MovingEntity extends Entity {
      Vector2D velocity;
-     int radius;
-     Point2D position;
   
-     public void update(){
-         position.scalePlusEquals(velocity, delta);
+     public void update(double delta){
+         location.scalePlusEquals(delta, velocity); //delta? was having error
      }
      public Vector2D getVelocity(){
          return velocity;

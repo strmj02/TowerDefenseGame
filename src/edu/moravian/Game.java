@@ -4,10 +4,31 @@
  */
 package edu.moravian;
 
+import java.awt.Graphics2D;
+
 /**
  *
  * @author samson
  */
-public class Game {
+public interface Game
+{
+    /**
+     * Update the Game state by one frame
+     */
+    void update(double delta);
+
+    /**
+     * Draw the current state of the game
+     *
+     * @param g2d the graphics with which to draw
+     */
+    void draw(Graphics2D g2d);
+
+    /**
+     * Determine whether the game is complete (the program should
+     * terminate)
+     * @return true if the game is complete
+     */
+    boolean done();
     
 }

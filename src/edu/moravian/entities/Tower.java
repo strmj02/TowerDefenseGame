@@ -8,6 +8,6 @@ package edu.moravian.entities;
  *
  * @author samson
  */
-public class Tower implements Entity{
+public class Tower extends Entity{
     
 }
