@@ -18,7 +18,7 @@ public class Creep extends MovingEntity{
     private Path path;
     private Point2D currentlyFollowing;
     
-    public Creep(Path path, int lifespan, Vector2D vec){
+    public Creep(Path path, int lifespan, Vector2D vec, double radius){
         this.path = path;
         this.lifespan = lifespan;
         currentlyFollowing = path.get(0);
@@ -26,6 +26,18 @@ public class Creep extends MovingEntity{
     }
     
     public void update(double delta){
+        if(this.atPoint()){
+            currentlyFollowing = path.getNext();
+        }
+        location.scalePlusEquals(delta, velocity);
         
+    }
+    
+    private boolean atPoint(){
+        if(Math.abs(location.getX() - currentlyFollowing.getX()) < 5 && 
+                Math.abs(location.getY() - currentlyFollowing.getY()) < 5){
+            return true;
+        }
+        return false;
     }
 }

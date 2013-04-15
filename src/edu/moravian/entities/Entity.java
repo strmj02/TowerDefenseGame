@@ -16,15 +16,6 @@ public abstract class Entity {
     Point2D location;
     BufferedImage image;
     double radius;
-    boolean alive;
-    
-    public boolean isAlive(){
-        return alive;
-    }
-    
-    public void makeDead(){
-        alive = false;
-    }
     
     public abstract void update(double delta);
 }

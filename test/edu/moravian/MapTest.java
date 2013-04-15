@@ -4,6 +4,7 @@
  */
 package edu.moravian;
 
+import edu.moravian.readers.PathReader;
 import edu.moravian.math.Point2D;
 import java.io.File;
 import org.junit.After;

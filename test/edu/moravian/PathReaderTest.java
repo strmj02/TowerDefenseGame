@@ -4,6 +4,7 @@
  */
 package edu.moravian;
 
+import edu.moravian.readers.PathReader;
 import java.io.File;
 import org.junit.Test;
 import static org.junit.Assert.*;

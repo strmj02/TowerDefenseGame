@@ -1,4 +1,4 @@
-package edu.moravian;
+package edu.moravian.readers;
 
 import edu.moravian.math.Point2D;
 import java.io.BufferedReader;
