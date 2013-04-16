@@ -148,6 +148,4 @@ import java.util.Properties;
     public ArrayList<Level> getLevels(){
         return levels;
     }
-    
-    
 }
