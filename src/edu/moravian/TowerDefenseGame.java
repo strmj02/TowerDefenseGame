@@ -15,7 +15,7 @@ import java.awt.Point;
 public class TowerDefenseGame implements Game {
     private int worldWidth;
     private int worldHeight;
-            
+    private EntityManager manager;        
     
     public TowerDefenseGame(int worldWidth, int worldHeight){
         
