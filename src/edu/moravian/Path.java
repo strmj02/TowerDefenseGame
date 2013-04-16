@@ -5,6 +5,8 @@
 package edu.moravian;
 
 import edu.moravian.math.Point2D;
+import edu.moravian.readers.PathReader;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -19,11 +21,13 @@ public class Path {
     
     //we pass it an already created arraylist--not sure about this.  can we combine 
     //this with a reader that allows us to read in points from a file and create them?
-    public Path(ArrayList<Point2D> createdPath){
-        this.path = createdPath;
+    public Path(File file){
+        PathReader reader = new PathReader(file);
+        path = reader.getPath();
         next = -1;
-        endpoint = createdPath.get(createdPath.size()-1);
+        endpoint = path.get(path.size()-2);
     }
+    
     
     public int getPathSize(){
         return path.size();

@@ -38,13 +38,13 @@ public class TowerDefenseGame implements Game {
         g2d.setColor(Color.white);
         g2d.fillRect(0, 0, worldWidth, worldHeight);
         
-        for(int i = 0; i< manager.getBalls().size(); i++){
-            Ball temp = manager.getBalls().get(i);
-            g2d.setColor(temp.getColor());
-            Point p = coordinatetrans.worldToScreen(temp.getPoint());
-            g2d.fillOval(p.x-((int)(temp.getRadius())), p.y- ((int)(temp.getRadius())), 
-                    (int)(temp.getRadius()) * 2, (int)(temp.getRadius()) * 2);
-        }
+       // for(int i = 0; i< manager.getBalls().size(); i++){
+       //     Ball temp = manager.getBalls().get(i);
+       //     g2d.setColor(temp.getColor());
+       //     Point p = coordinatetrans.worldToScreen(temp.getPoint());
+       //     g2d.fillOval(p.x-((int)(temp.getRadius())), p.y- ((int)(temp.getRadius())), 
+        //            (int)(temp.getRadius()) * 2, (int)(temp.getRadius()) * 2);
+        //}
 
     }
 

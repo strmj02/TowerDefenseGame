@@ -19,7 +19,7 @@ public class GameStates {
     private int lives;
 
     public GameStates() {
-        generalReader = new GeneralReader("GameStatesText.txt");
+        generalReader = new GeneralReader("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/GameStatesText");
         money = generalReader.getMoney();
         levels = generalReader.getLevels();
         lives = generalReader.getPlayerLife();
@@ -39,6 +39,10 @@ public class GameStates {
 
     public Level getLevel(int i) {
         return levels.get(i);
+    }
+    
+    public int numLevels(){
+        return levels.size();
     }
 
 }

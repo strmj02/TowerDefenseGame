@@ -118,20 +118,24 @@ import java.util.Properties;
         } catch (Exception exceptin) {
             System.out.println("Cannot read File");
         }
-        String lives = properties.getProperty("Creep Life Points");
-        String numCreeps = properties.getProperty("number Of Creeps");
-        String timeBet = properties.getProperty("Time Between Spawns");
+        String lives = properties.getProperty("CreepLifePoints");
+        String numCreeps = properties.getProperty("NumberOfCreeps");
+        String timeBet = properties.getProperty("TimeBetweenSpawns");
         String money = properties.getProperty("Money");
-        String playerLives = properties.getProperty("Player lives");
-
+        String playerLives = properties.getProperty("PlayerLives");
+        String numberLevels = properties.getProperty("NumberOfLevels");
+        
+        int levelnum = Integer.parseInt(numberLevels);
         playerLife = Integer.parseInt(playerLives);
         int creepLives = Integer.parseInt(lives);
         int creeps = Integer.parseInt(numCreeps);
         double time = Double.parseDouble(timeBet);
         mmoney = Double.parseDouble(money);
 
-        Level level = new Level(creeps, creepLives, time);
+        for(int i = 0; i < levelnum; i++){
+        Level level = new Level(creeps + i*5, creepLives, time);
         levels.add(level);
+    }
     }
 
     /**

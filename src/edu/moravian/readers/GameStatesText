@@ -1,6 +1,6 @@
-Player Lives = 10
-Number of Levels = 5
-Creep Life Points = 2
-Number of Creeps = 10
-Time Between Spawns = 1
+PlayerLives = 10
+NumberOfLevels = 5
+CreepLifePoints = 2
+NumberOfCreeps = 10
+TimeBetweenSpawns = 1
 Money = 100

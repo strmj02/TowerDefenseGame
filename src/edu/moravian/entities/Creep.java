@@ -24,12 +24,16 @@ public class Creep extends MovingEntity{
         this.lifespan = lifespan;
         currentlyFollowing = path.get(0);
         velocity = vec;
+        location = path.get(0);
     }
     
     public void update(double delta){
         if(this.atPoint()){
             currentlyFollowing = path.getNext();
         }
+        velocity = currentlyFollowing.minus(location);
+        velocity.normalize();
+        ///normalize work???///
         location.scalePlusEquals(delta, velocity);
         
     }
