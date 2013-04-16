@@ -4,6 +4,8 @@
  */
 package edu.moravian.readers;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author samson
@@ -12,12 +14,15 @@ package edu.moravian.readers;
 public class GameStates {
 
     private double money;
-    private Level level;
+    private ArrayList<Level> levels;
     private GeneralReader generalReader;
+    private int lives;
 
     public GameStates() {
-        generalReader = new GeneralReader(level);
+        generalReader = new GeneralReader("GameStatesText.txt");
         money = generalReader.getMoney();
+        levels = generalReader.getLevels();
+        lives = generalReader.getPlayerLife();
     }
 
     public double getMoney() {
@@ -32,8 +37,8 @@ public class GameStates {
         money -= sub;
     }
 
-    public Level getLevel() {
-        return level;
+    public Level getLevel(int i) {
+        return levels.get(i);
     }
-}
+
 }
