@@ -28,6 +28,13 @@ public class EntityManager {
         creeps = new ArrayList<Creep>();
         towers = new ArrayList<Tower>();
     }
+    
+    
+    public void update(double delta){
+        for(Creep c : creeps){
+            c.update(delta);
+        }
+    }
 
     /**
      * A method to add a bullet to the fired bullets in our world

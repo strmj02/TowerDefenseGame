@@ -4,6 +4,7 @@
  */
 package edu.moravian;
 
+import edu.moravian.math.Point2D;
 import edu.moravian.readers.PathReader;
 import java.io.File;
 import org.junit.Test;
@@ -46,6 +47,45 @@ public class PathReaderTest {
        assertEquals(200, path.get(6).getX(), 0);
        assertEquals(200, path.get(6).getY(), 0);
        
+       Point2D p = path.getNext();
+       assertEquals(0, p.getX(), 0);
+       assertEquals(0, p.getY(), 0);
+       
+       p = path.getNext();
+       assertEquals(40, p.getX(), 0);
+       assertEquals(0, p.getY(), 0);
+       
+       p = path.getNext();
+       assertEquals(40, p.getX(), 0);
+       assertEquals(500, p.getY(), 0);
+       
+       p = path.getNext();
+       assertEquals(100, p.getX(), 0);
+       assertEquals(500, p.getY(), 0);
+       
+       p = path.getNext();
+       assertEquals(100, p.getX(), 0);
+       assertEquals(60, p.getY(), 0);
+       
+       p = path.getNext();
+       assertEquals(200, p.getX(), 0);
+       assertEquals(60, p.getY(), 0);
+       
+       p = path.getNext();
+       assertEquals(200, p.getX(), 0);
+       assertEquals(200, p.getY(), 0);
+       
+       p = path.getNext();
+       assertEquals(200, p.getX(), 0);
+       assertEquals(200, p.getY(), 0);
+       
        }
+   
+   @Test
+   public void testPath(){
+       File file = new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText");
+       Path path = new Path(file);
+
+   }
    }
 

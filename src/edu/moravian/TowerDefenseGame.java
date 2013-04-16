@@ -4,9 +4,12 @@
  */
 package edu.moravian;
 
+import edu.moravian.readers.GameStates;
+import edu.moravian.readers.Level;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Point;
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,16 +18,27 @@ import java.awt.Point;
 public class TowerDefenseGame implements Game {
     private int worldWidth;
     private int worldHeight;
-    private EntityManager manager;        
+    private EntityManager manager;   
+    private GameStates gameStates;
+    Path path;
+    ArrayList<Level> levels;
+    Level currentLevel;
     
     public TowerDefenseGame(int worldWidth, int worldHeight){
-        
+        this.worldWidth = worldWidth;
+        this.worldHeight = worldHeight;
+        manager = new EntityManager();
+        gameStates = new GameStates();
+        path = new Path(new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText"));
+        currentLevel = levels.get(0);
     }
     
     
     
         public synchronized void update(double delta)
     {
+
+        
         
       }
     
@@ -56,4 +70,6 @@ public class TowerDefenseGame implements Game {
     {
         return false;
     }
+    
+    
 }

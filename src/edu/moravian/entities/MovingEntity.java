@@ -13,11 +13,16 @@ import edu.moravian.math.Vector2D;
  */
 public abstract class MovingEntity extends Entity {
      Vector2D velocity;
+     boolean isAlive = true;
   
      public void update(double delta){
          location.scalePlusEquals(delta, velocity); //delta? was having error
      }
      public Vector2D getVelocity(){
          return velocity;
+     }
+     
+     public boolean isAlive(){
+         return isAlive;
      }
 }

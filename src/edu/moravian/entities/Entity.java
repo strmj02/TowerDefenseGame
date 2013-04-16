@@ -13,9 +13,21 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Entity {
     
-    Point2D location;
-    BufferedImage image;
-    double radius;
+    protected Point2D location;
+    protected BufferedImage image;
+    protected double radius;
     
     public abstract void update(double delta);
+    
+    public Point2D getLocation(){
+        return location;
+    }
+    
+    public double getRadius(){
+        return radius;
+    }
+    
+    public BufferedImage getImage(){
+        return image;
+    }
 }

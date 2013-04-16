@@ -25,7 +25,7 @@ public class Path {
         PathReader reader = new PathReader(file);
         path = reader.getPath();
         next = -1;
-        endpoint = path.get(path.size()-2);
+        endpoint = path.get(path.size()-1);
     }
     
     
@@ -34,7 +34,13 @@ public class Path {
     }
     
     public Point2D getNext(){
-        next++;
+        if(next+1>= path.size()){
+            
+        }
+        else{
+            next++;
+        }
+        
         return path.get(next);
     }
     
