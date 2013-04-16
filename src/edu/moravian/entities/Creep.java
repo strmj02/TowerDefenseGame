@@ -18,6 +18,7 @@ public class Creep extends MovingEntity{
     private Path path;
     private Point2D currentlyFollowing;
     
+    
     public Creep(Path path, int lifespan, Vector2D vec, double radius){
         this.path = path;
         this.lifespan = lifespan;

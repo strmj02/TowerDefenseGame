@@ -4,9 +4,10 @@
  */
 package edu.moravian.readers;
 
-import edu.moravian.Level;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -96,18 +97,21 @@ import java.util.Properties;
                 }
         }*/
 
-public class GeneralReader {
+   public class GeneralReader {
 
     Properties properties;
     private double mmoney;
+    private int playerLife;
+    ArrayList<Level> levels = new ArrayList<Level>();
 
     /**
      * handle reading in the file and setting the information to the appropriate
      * variables
      */
-    public GeneralReader(Level level) {
+    public GeneralReader(String filenam) {
+        levels = new ArrayList<Level>();
         properties = new Properties();
-        String fileName = "towerGame.txt";
+        String fileName = filenam;
         try {
             InputStream input = new FileInputStream(fileName);
             properties.load(input);
@@ -118,14 +122,16 @@ public class GeneralReader {
         String numCreeps = properties.getProperty("number Of Creeps");
         String timeBet = properties.getProperty("Time Between Spawns");
         String money = properties.getProperty("Money");
+        String playerLives = properties.getProperty("Player lives");
 
-
-        double creepLives = Double.parseDouble(lives);
-        double creeps = Double.parseDouble(numCreeps);
+        playerLife = Integer.parseInt(playerLives);
+        int creepLives = Integer.parseInt(lives);
+        int creeps = Integer.parseInt(numCreeps);
         double time = Double.parseDouble(timeBet);
         mmoney = Double.parseDouble(money);
 
-        level = new Level(creeps, creepLives, time);
+        Level level = new Level(creeps, creepLives, time);
+        levels.add(level);
     }
 
     /**
@@ -134,7 +140,14 @@ public class GeneralReader {
      */
     public double getMoney() {
         return mmoney;
-    }
 }
+    public int getPlayerLife(){
+        return playerLife;
+    }
+    
+    public ArrayList<Level> getLevels(){
+        return levels;
+    }
+    
     
 }
