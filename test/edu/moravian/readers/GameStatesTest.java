@@ -18,9 +18,8 @@ public class GameStatesTest {
      */
     @Test
     public void testGetMoney() {
-        System.out.println("getMoney");
         GameStates instance = new GameStates();
-        double expResult = 0.0;
+        double expResult = 100.0;
         double result = instance.getMoney();
         assertEquals(expResult, result, 0.0);
      
@@ -35,6 +34,7 @@ public class GameStatesTest {
         double add = 12.0;
         GameStates instance = new GameStates();
         instance.addMoney(add);
+        assertEquals(112.0, instance.getMoney(), 0);
         
     }
 
@@ -48,7 +48,7 @@ public class GameStatesTest {
         GameStates instance = new GameStates();
         instance.addMoney(12);
         instance.subtractMoney(sub);
-        assertEquals(6, instance.getMoney());
+        assertEquals(106.0, instance.getMoney(), 0);
     }
 
     /**
@@ -58,8 +58,12 @@ public class GameStatesTest {
     public void testGetLevel() {
         GameStates instance = new GameStates();
         Level expResult = null;
-        Level result = instance.getLevel();
-        assertEquals(expResult, result);
+        for(int i = 0; i < instance.numLevels(); i++){
+            Level result = instance.getLevel(i);
+            assertEquals(10 +i*5, result.getCreeps(), 0);
+        }
+        
+        //assertEquals(expResult, result);
         
     }
 }

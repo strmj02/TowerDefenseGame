@@ -19,10 +19,10 @@ public class PathReaderTest {
     
    @Test
    public void testReader(){
-       File file = new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/PathText");
+       File file = new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText");
        PathReader reader = new PathReader(file);
        System.out.println(reader.getPath().size());
-       Path path = new Path(reader.getPath());
+       Path path = new Path(file);
        
       
        assertEquals(0, path.get(0).getX(), 0);

@@ -25,9 +25,8 @@ public class MapTest {
    
     @Test
     public void testMap(){
-    File file = new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/PathText");
-       PathReader reader = new PathReader(file);
-       Path path = new Path(reader.getPath());
+    File file = new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText");
+       Path path = new Path(file);
        Map map = new Map(path, 600, 800, new Point2D(0,0));
        
        assertEquals(20, map.getXSpace(), 0);
