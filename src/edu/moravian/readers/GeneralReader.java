@@ -4,7 +4,7 @@
  */
 package edu.moravian.readers;
 
-import edu.moravian.Level;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
@@ -106,25 +106,33 @@ public class GeneralReader {
      * variables
      */
     public GeneralReader(Level level) {
+        //create our properties list
         properties = new Properties();
+        //set our file name
         String fileName = "towerGame.txt";
+            //create our input stream, using the file
         try {
             InputStream input = new FileInputStream(fileName);
             properties.load(input);
         } catch (Exception exceptin) {
             System.out.println("Cannot read File");
         }
+        //get the creep life points value as a string
         String lives = properties.getProperty("Creep Life Points");
+        //get the number of creeps value as a string
         String numCreeps = properties.getProperty("number Of Creeps");
+        //get the value of the time in between creep spawns, as a string
         String timeBet = properties.getProperty("Time Between Spawns");
+        //get the initial value of usable money, as a string
         String money = properties.getProperty("Money");
 
-
+        //parse our strings to create doubles
         double creepLives = Double.parseDouble(lives);
         double creeps = Double.parseDouble(numCreeps);
         double time = Double.parseDouble(timeBet);
         mmoney = Double.parseDouble(money);
-
+        
+        //create our levels
         level = new Level(creeps, creepLives, time);
     }
 
@@ -137,4 +145,4 @@ public class GeneralReader {
     }
 }
     
-}
+
