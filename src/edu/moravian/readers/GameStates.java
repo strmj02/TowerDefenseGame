@@ -24,6 +24,7 @@ public class GameStates {
     private Level currentLevel;
     private ArrayList<Creep> creeps;
     private Path path;
+    private int creepCount;
 
     public GameStates(Path path) {
         generalReader = new GeneralReader("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/GameStatesText");
@@ -32,7 +33,7 @@ public class GameStates {
         lives = generalReader.getPlayerLife();
         currentLevel = levels.get(0);
         this.path = path;
-        
+        creepCount = 0;
         
     }
 
@@ -56,14 +57,14 @@ public class GameStates {
         return levels.size();
     }
     
-    public void initializeCreeps(){
-        creeps = new ArrayList<Creep>();
-        for(int i = 0; i < currentLevel.getCreeps(); i++){
-
-            //fix this so that we can have different images
-            creeps.add(new Creep(path, 5, new Vector2D(), 10));
-        }
-                
+    public int getCreepCount(){
+        return creepCount;
+        
     }
+    
+    public void setCreepCount(int i){
+        creepCount = i;
+    }
+    
 
 }

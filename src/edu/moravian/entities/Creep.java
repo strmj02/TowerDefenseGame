@@ -33,15 +33,15 @@ public class Creep extends MovingEntity{
     }
     
     public void update(double delta){
-        System.out.println("Delta " + delta);
         if(this.atPoint()){
             currentlyFollowing = path.getNext();
-            System.out.println("atPoint" + currentlyFollowing.getY());
+            //System.out.println("atPoint" + currentlyFollowing.getY());
         }
         velocity = currentlyFollowing.minus(location);
         velocity.normalize();
         ///normalize work???///
-        location.scalePlusEquals(delta, velocity);
+        location.scalePlusEquals(delta * 50, velocity);
+        offScreen();
         
     }
     

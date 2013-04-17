@@ -189,7 +189,7 @@ class VideoController extends JFrame implements Runnable, MouseListener, MouseMo
 
                 //make prevLives equal to the number of lives at the end of this frame
                 //update the game itself
-                game.update(timepast);
+                game.update(timer.getDelta());
                 Graphics g = bufStrat.getDrawGraphics();
                 
                 // Drawing is done through a Graphics object.  You can think
@@ -240,19 +240,18 @@ class VideoController extends JFrame implements Runnable, MouseListener, MouseMo
                 //check if its less than 12.5 milliseconds per frame, because that is 
                 //about the amount of milliseconds to keep it at 80 fps
                 
-                System.out.println(timer.getDelta() + " " + 1.0/90);
-                if(timer.getDelta() < 1.0/90.0){
+                //if(timer.getDelta() < 1.0/90.0){
                 try
                 {
                     //sleep to keep timing correct and to have about evenly spaced frames
-                    Thread.sleep((int)((1.0/90.0 * 10000)- (timer.getDelta() * 10000)));
+                    Thread.sleep(10);
                     System.out.println();
                 }
                 catch (InterruptedException ex)
                 {
                     System.err.print("Not supported");
                 }
-                }
+                //}
             timer.tick();
                     
             }

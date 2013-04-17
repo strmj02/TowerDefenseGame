@@ -4,6 +4,8 @@
  */
 package edu.moravian.readers;
 
+import edu.moravian.Path;
+import java.io.File;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,7 +20,8 @@ public class GameStatesTest {
      */
     @Test
     public void testGetMoney() {
-        GameStates instance = new GameStates();
+        Path p = new Path(new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText"));
+        GameStates instance = new GameStates(p);
         double expResult = 100.0;
         double result = instance.getMoney();
         assertEquals(expResult, result, 0.0);
@@ -30,9 +33,9 @@ public class GameStatesTest {
      */
     @Test
     public void testAddMoney() {
-        
+        Path p = new Path(new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText"));
         double add = 12.0;
-        GameStates instance = new GameStates();
+        GameStates instance = new GameStates(p);
         instance.addMoney(add);
         assertEquals(112.0, instance.getMoney(), 0);
         
@@ -43,9 +46,9 @@ public class GameStatesTest {
      */
     @Test
     public void testSubtractMoney() {
-         
+        Path p = new Path(new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText"));
         double sub = 6.0;
-        GameStates instance = new GameStates();
+        GameStates instance = new GameStates(p);
         instance.addMoney(12);
         instance.subtractMoney(sub);
         assertEquals(106.0, instance.getMoney(), 0);
@@ -56,7 +59,8 @@ public class GameStatesTest {
      */
     @Test
     public void testGetLevel() {
-        GameStates instance = new GameStates();
+        Path p = new Path(new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText"));
+        GameStates instance = new GameStates(p);
         Level expResult = null;
         for(int i = 0; i < instance.numLevels(); i++){
             Level result = instance.getLevel(i);

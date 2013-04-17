@@ -49,6 +49,7 @@ import java.util.Properties;
 
         for(int i = 0; i < levelnum; i++){
         Level level = new Level(creeps + i*5, creepLives, time);
+        
         levels.add(level);
     }
     }

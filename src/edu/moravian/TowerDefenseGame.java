@@ -4,10 +4,15 @@
  */
 package edu.moravian;
 
+import edu.moravian.entities.Creep;
+import edu.moravian.math.CoordinateTranslator;
+import edu.moravian.math.Point2D;
+import edu.moravian.math.Vector2D;
 import edu.moravian.readers.GameStates;
 import edu.moravian.readers.Level;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -23,22 +28,48 @@ public class TowerDefenseGame implements Game {
     Path path;
     ArrayList<Level> levels;
     Level currentLevel;
+    double deltaTrack;
+    private int l;
+    CoordinateTranslator coordinatetrans;
     
-    public TowerDefenseGame(int worldWidth, int worldHeight){
+    public TowerDefenseGame(int worldWidth, int worldHeight, CoordinateTranslator cT){
         this.worldWidth = worldWidth;
         this.worldHeight = worldHeight;
         manager = new EntityManager();
-        gameStates = new GameStates();
         path = new Path(new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText"));
-        currentLevel = levels.get(0);
+        gameStates = new GameStates(path);
+        l = 0;
+        currentLevel = gameStates.getLevel(l);
+        deltaTrack = 0;
+        coordinatetrans = cT;
     }
     
     
     
         public synchronized void update(double delta)
     {
-
+        deltaTrack+=delta;
+        if(deltaTrack > currentLevel.getTime() && gameStates.getCreepCount() < currentLevel.getCreeps() ){  
+            Path p = new Path(new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText"));
+            manager.addCreep(new Creep(p, 5, new Vector2D(0,0), 10));
+            int numCreepDeployed = gameStates.getCreepCount() + 1;
+            gameStates.setCreepCount(numCreepDeployed);
+            deltaTrack = 0;
+        }
+        manager.update(delta);
         
+        manager.cleanUp();
+        
+        
+        System.out.println("DELTA  " +  delta);
+        
+        if(gameStates.getCreepCount()>=currentLevel.getCreeps() && manager.getCreeps().size()==0 && l < gameStates.numLevels()-1){
+            l++;
+            System.out.println("IN THIS");
+            currentLevel = gameStates.getLevel(l);
+            gameStates.setCreepCount(0);
+            deltaTrack = -7;
+        }
         
       }
     
@@ -52,13 +83,13 @@ public class TowerDefenseGame implements Game {
         g2d.setColor(Color.white);
         g2d.fillRect(0, 0, worldWidth, worldHeight);
         
-       // for(int i = 0; i< manager.getBalls().size(); i++){
-       //     Ball temp = manager.getBalls().get(i);
-       //     g2d.setColor(temp.getColor());
-       //     Point p = coordinatetrans.worldToScreen(temp.getPoint());
-       //     g2d.fillOval(p.x-((int)(temp.getRadius())), p.y- ((int)(temp.getRadius())), 
-        //            (int)(temp.getRadius()) * 2, (int)(temp.getRadius()) * 2);
-        //}
+       for(int i = 0; i< manager.getCreeps().size(); i++){
+              Creep temp = manager.getCreeps().get(i);
+              g2d.setColor(Color.BLUE);
+              Point p = coordinatetrans.worldToScreen(temp.getLocation());
+            g2d.fillOval(p.x-((int)(temp.getRadius())), p.y- ((int)(temp.getRadius())), 
+                    (int)(temp.getRadius()) * 2, (int)(temp.getRadius()) * 2);
+        }
 
     }
 

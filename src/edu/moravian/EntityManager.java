@@ -106,4 +106,17 @@ public class EntityManager {
     public ArrayList<Creep> getCreeps() {
         return creeps;
     }
+    
+    public void cleanUp(){
+        ArrayList<Creep> temp = new ArrayList<Creep>();
+        for(int i = 0; i < creeps.size(); i++){
+            if(creeps.get(i).isAlive() ==false){
+                temp.add(creeps.get(i));
+            }
+        }
+        for(Creep c : temp){
+            creeps.remove(c);
+        }
+        
+    }
 }

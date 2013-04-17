@@ -10,21 +10,21 @@ package edu.moravian.readers;
  */
 public class Level {
 
-    private double creeps; //number of creeps
-    private double creepsLives;//number of times a creep can be hit
+    private int creeps; //number of creeps
+    private int creepsLives;//number of times a creep can be hit
     private double time; //time in between spawns
 
-    public Level(double creeps, double creepsLives, double time) {
+    public Level(int creeps, int creepsLives, double time) {
         this.creeps = creeps;
         this.creepsLives = creepsLives;
         this.time = time;
     }
 
-    public double getCreeps() {
+    public int getCreeps() {
         return creeps;
     }
 
-    public double getCreepsLives() {
+    public int getCreepsLives() {
         return creepsLives;
     }
 
