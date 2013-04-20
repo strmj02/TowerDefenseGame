@@ -1,5 +1,6 @@
 package edu.moravian;
 
+import edu.moravian.math.CoordinateTranslator;
 import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,6 +27,7 @@ class VideoController extends JFrame implements Runnable, MouseListener, MouseMo
     // Convience references to the Graphics system
     private GraphicsEnvironment genv;
     private GraphicsDevice gdev;
+    CoordinateTranslator ct;
 
     // The parameters specified by the user
     private int width;
@@ -46,13 +48,14 @@ class VideoController extends JFrame implements Runnable, MouseListener, MouseMo
      * @throws VideoConfigurationException if the desired video mode is
      *         not available or if fullscreen mode is not allowed
      */
-    public VideoController(int width, int height, int depth, Game theGame)
+    public VideoController(int width, int height, int depth, Game theGame, CoordinateTranslator ct)
             throws VideoConfigurationException
     {
         this.width = width;
         this.height = height;
         this.depth = depth;
         this.game = theGame;
+        this.ct = ct;
         
         // Save references to the graphics environment and device
         // for future reference

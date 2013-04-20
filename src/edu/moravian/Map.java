@@ -40,45 +40,61 @@ public class Map {
        grid = new boolean[desiredRows][desiredColumns];
        xSpace = worldHeight/desiredRows;
        ySpace = worldWidth/desiredColumns;
-       for(int i = 0; i < path.getPathSize(); i++){
-           //for(int j = i+1; j < path.getPathSize(); j++){
+       for(int i = 0; i < path.getPathSize()-1; i++){
                Point2D a = path.get(i);
                int aX = (int)((a.getX()-lowerLeft.getX()) / xSpace);
                int aY = (int)((a.getY()-lowerLeft.getY()) / ySpace);        
                grid[aX][aY] = true;
-               //Point2D b = path.get(j);
+               Point2D b = path.get(i+1);
                //caculate vector from one point to another, see if it passes through more
                //than one coordinate
-               /*Vector2D temp = b.minus(a);
+               Vector2D temp = b.minus(a);
+               
                if(temp.getX()!=0){
-                   if(temp.getX() <0){
-                   while(Math.abs(temp.getX()) < 2* xSpace){
-                       Point2D test = a.plus(new Vector2D(-xSpace ,0));
+                if(temp.getX() <0){
+                   while(temp.magnitude() >= xSpace){
+                       a.plusEquals(new Vector2D(-xSpace ,0));
                        temp = b.minus(a);
-                       aX = (int)(a.getX()-lowerLeft.getX() / xSpace);
-                       aY = (int)(a.getY()-lowerLeft.getY() / ySpace);
+                       aX = (int)((a.getX()-lowerLeft.getX()) / xSpace);
+                       aY = (int)((a.getY()-lowerLeft.getY()) / ySpace); 
                        grid[aX][aY] = true;
                    }
                    }
                    else{
-                   while(Math.abs(temp.getX()) < 2* xSpace){
-                       Point2D test = a.plus(new Vector2D(xSpace ,0));
+                   
+                   
+                   while(temp.magnitude() >= xSpace){
+                       a.plusEquals(new Vector2D(xSpace ,0));
                        temp = b.minus(a);
-                       aX = (int)(a.getX()-lowerLeft.getX() / xSpace);
-                       aY = (int)(a.getY()-lowerLeft.getY() / ySpace);
+                       aX = (int)((a.getX()-lowerLeft.getX() )/ xSpace);
+                       aY = (int)((a.getY()-lowerLeft.getY()) / ySpace);
                        grid[aX][aY] = true;
                    }
                    }
                    
                }
                if(temp.getY()!=0){
-                   while(Math.abs(temp.getY()) < 2* ySpace){
+                   if(temp.getY() <0){
+                   while(temp.magnitude() >= ySpace){
+                       a.plusEquals(new Vector2D(0, -ySpace));
+                       temp = b.minus(a);
+                       aX = (int)((a.getX()-lowerLeft.getX()) / xSpace);
+                       aY = (int)((a.getY()-lowerLeft.getY()) / ySpace); 
+                       grid[aX][aY] = true;
+                   }
+                   }
+                   else{
+                   while(temp.magnitude() >= ySpace){
+                       a.plusEquals(new Vector2D(0, ySpace));
+                       temp = b.minus(a);
+                       aX = (int)((a.getX()-lowerLeft.getX() )/ xSpace);
+                       aY = (int)((a.getY()-lowerLeft.getY()) / ySpace);
+                       grid[aX][aY] = true;
+                   }
+                   }
                        
                    }
-               }*/
-           //}
-       }
-       
+               }
    }
    /**
     * Checks to see if we can place something in the world.  It first sees if the

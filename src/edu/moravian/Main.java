@@ -1,5 +1,8 @@
 package edu.moravian;
 
+import edu.moravian.math.CoordinateTranslator;
+import edu.moravian.math.Point2D;
+
 /**
  * The start-up for our game.
  * 
@@ -15,13 +18,15 @@ public class Main
     {
         // Create our game with a world size equal to
         // the screen size
-        TowerDefenseGame g = new TowerDefenseGame(DWIDTH, DHEIGHT);
+        CoordinateTranslator ct = new CoordinateTranslator(800, 600, 800, 600, new Point2D(0,0));
+        
+        TowerDefenseGame g = new TowerDefenseGame(DWIDTH, DHEIGHT, ct);
          
         try
         {
             // Create the video controller.  This will throw if something
             // goes wrong
-            VideoController video = new VideoController(DWIDTH, DHEIGHT, DBITDEPTH, g);
+            VideoController video = new VideoController(DWIDTH, DHEIGHT, DBITDEPTH, g, ct);
 
             // And run the game
             new Thread(video).start();
