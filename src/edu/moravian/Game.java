@@ -4,6 +4,7 @@
  */
 package edu.moravian;
 
+import edu.moravian.math.Point2D;
 import java.awt.Graphics2D;
 
 /**
@@ -31,4 +32,9 @@ public interface Game
      */
     boolean done();
     
+    void mouseClick(Point2D p);
+    
+    void mouseDragged(Point2D p);
+    
+    void keyPressed(char c);
 }

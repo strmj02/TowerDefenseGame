@@ -1,6 +1,7 @@
 package edu.moravian;
 
 import edu.moravian.math.CoordinateTranslator;
+import edu.moravian.math.Point2D;
 import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -248,7 +249,6 @@ class VideoController extends JFrame implements Runnable, MouseListener, MouseMo
                 {
                     //sleep to keep timing correct and to have about evenly spaced frames
                     Thread.sleep(10);
-                    System.out.println();
                 }
                 catch (InterruptedException ex)
                 {
@@ -280,7 +280,8 @@ class VideoController extends JFrame implements Runnable, MouseListener, MouseMo
     //here we implement all methods from our MouseListener and MouseMotionListner
     //in this game we do not use most of them
     public void mouseClicked(MouseEvent e){
-        System.out.println(e.getX() + " " + e.getY());
+        Point2D here = ct.screenToWorld(e.getPoint());
+        game.mouseClick(here);
     }
     public void mousePressed(MouseEvent e){
     }
@@ -299,10 +300,12 @@ class VideoController extends JFrame implements Runnable, MouseListener, MouseMo
         //want sprite from player to move along with mouse
     }
     public void mouseDragged(MouseEvent e){
-        
+        Point2D here = ct.screenToWorld(e.getPoint());
+        game.mouseDragged(here);
     }
     @Override
     public void keyPressed(KeyEvent ke) {
+        game.keyPressed(ke.getKeyChar());
     }
     @Override
     public void keyReleased(KeyEvent ke) {}

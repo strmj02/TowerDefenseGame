@@ -7,8 +7,7 @@ package edu.moravian.entities;
 import edu.moravian.Path;
 import edu.moravian.math.Point2D;
 import edu.moravian.math.Vector2D;
-import java.net.URL;
-import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -21,13 +20,14 @@ public class Creep extends MovingEntity{
     private Point2D currentlyFollowing;
     
     
-    public Creep(Path path, int lifespan, Vector2D vec, double radius){
+    public Creep(Path path, int lifespan, Vector2D vec, double radius, BufferedImage i){
         this.path = path;
         this.lifespan = lifespan;
         currentlyFollowing = path.getNext();
         velocity = vec;
         location = path.get(0);
         this.radius = radius;
+        image = i;
         
         //this.image = ImageIO.read(url);
     }
@@ -46,8 +46,8 @@ public class Creep extends MovingEntity{
     }
     
     private boolean atPoint(){
-        if(Math.abs(location.getX() - currentlyFollowing.getX()) < 5 && 
-                Math.abs(location.getY() - currentlyFollowing.getY()) < 5){
+        if(Math.abs(location.getX() - currentlyFollowing.getX()) < 1 && 
+                Math.abs(location.getY() - currentlyFollowing.getY()) < 1){
             return true;
         }
         return false;

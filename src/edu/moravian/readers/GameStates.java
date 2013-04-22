@@ -27,7 +27,7 @@ public class GameStates {
     private int creepCount;
 
     public GameStates(Path path) {
-        generalReader = new GeneralReader("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/GameStatesText");
+        generalReader = new GeneralReader("gamesStates.txt");
         money = generalReader.getMoney();
         levels = generalReader.getLevels();
         lives = generalReader.getPlayerLife();

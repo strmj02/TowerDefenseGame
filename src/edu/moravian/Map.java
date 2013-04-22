@@ -14,8 +14,8 @@ import edu.moravian.math.Vector2D;
 public class Map {
    private boolean grid[][];
    private Path path;
-   private int desiredColumns = 40;
-   private int desiredRows = 30;
+   private int desiredColumns = 20;
+   private int desiredRows = 15;
    private double ySpace;
    private double xSpace;
    private Point2D lowerLeft;
@@ -37,7 +37,7 @@ public class Map {
        this.lowerLeft = lowerLeft;
        //int rows = (int)worldWidth/desiredRows;
        //int columns = (int)worldHeight/desiredColumns;
-       grid = new boolean[desiredRows][desiredColumns];
+       grid = new boolean[desiredRows + 10][desiredColumns+ 10] ;
        xSpace = worldHeight/desiredRows;
        ySpace = worldWidth/desiredColumns;
        for(int i = 0; i < path.getPathSize()-1; i++){
@@ -140,4 +140,15 @@ public class Map {
    public double getYSpace(){
        return ySpace;
    }
+   
+   public void fixPath(Path p){
+       for(int i = 0; i < p.getPathSize()-1; i++){
+            Point2D a = getUpperLeft(p.get(i));
+            double xx = a.getX() + (xSpace/2);
+            double yy = a.getY() - (ySpace/2);
+            a = new Point2D(xx,yy);
+            p.setPath(i, a );
+       }
+   }
+   
 }

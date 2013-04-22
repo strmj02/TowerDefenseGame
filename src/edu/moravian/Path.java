@@ -51,4 +51,8 @@ public class Path {
     public Point2D getEndpoint(){
         return endpoint;
     }
+    
+    public void setPath(int i, Point2D p){
+        path.set(i, p);
+    }
 }

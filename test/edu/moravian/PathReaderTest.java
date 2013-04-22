@@ -20,7 +20,7 @@ public class PathReaderTest {
     
    @Test
    public void testReader(){
-       File file = new File("/Network/Servers/hogwarts.cs.moravian.edu/Volumes/UserSpace/Users/johnson/NetBeansProjects/FinalProject/TowerDefenseGame/src/edu/moravian/readers/PathText");
+       File file = new File("path1.txt");
        PathReader reader = new PathReader(file);
        System.out.println(reader.getPath().size());
        Path path = new Path(file);
